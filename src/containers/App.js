@@ -4,6 +4,7 @@ import { robots } from '../components/robots';
 import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry';
 
 const state = {
     robots: robots,
@@ -29,19 +30,20 @@ class App extends Component{
             return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         });
    
-            return !robots.length ?
-                <h1>Loading...</h1> :            
-                (
-                    <div className='tc'>
-                        <h1 className='f2' >RoboFriends</h1>
-                        <SearchBox searchChange={this.onSearchChange} />
-                        <Scroll>
-                        <CardList robots={filteredRobots}/>
-                        </Scroll>
-                    </div>
-                )
+        return !robots.length ?
+            <h1>Loading...</h1> :            
+            (
+                <div className='tc'>
+                    <h1 className='f2' >RoboFriends</h1>
+                    <SearchBox searchChange={this.onSearchChange} />
+                    <Scroll>
+                        <ErrorBoundry>
+                            <CardList robots={filteredRobots}/>                        
+                        </ErrorBoundry>
+                    </Scroll>
+                </div>
+            )
         }
     }
-
 export default App;
 
