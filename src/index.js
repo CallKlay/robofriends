@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Hello from './Hello';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
+import { robots } from './robots';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -13,7 +14,7 @@ import 'tachyons';
 // );
 
 ReactDOM.render(
-  <Hello greeting={'Hello React Ninja'} />,
+  <App/>,
   document.getElementById('root')
 );
 
